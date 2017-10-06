@@ -1,0 +1,69 @@
+
+header{
+    width: 100%;
+    height: 64px;
+    background: #2d5be3;
+    text-transform: capitalize;
+    color: white;
+    font-weight: bold;
+    padding: 16px 50px;
+    font-size: 22px;
+    vertical-align: middle;
+}
+.venues{
+    padding: 2%;
+    
+    background: -moz-linear-gradient(45deg, #008080 0%, #FFFFFF 25%, #05C1FF 50%, #FFFFFF 75%, #005757 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #008080), color-stop(25%, #FFFFFF), color-stop(50%, #05C1FF), color-stop(75%, #FFFFFF), color-stop(100%, #005757)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(45deg, #008080 0%, #FFFFFF 25%, #05C1FF 50%, #FFFFFF 75%, #005757 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(45deg, #008080 0%, #FFFFFF 25%, #05C1FF 50%, #FFFFFF 75%, #005757 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(45deg, #008080 0%, #FFFFFF 25%, #05C1FF 50%, #FFFFFF 75%, #005757 100%); /* ie10+ */
+    background: linear-gradient(45deg, #008080 0%, #FFFFFF 25%, #05C1FF 50%, #FFFFFF 75%, #005757 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005757', endColorstr='#008080',GradientType=1 ); /* ie6-9 */
+}
+.nav{
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-size: 12px;
+    text-align: center;
+}
+.nav-tabs .nav-item, .nav-link{
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 100%;
+    cursor: pointer;
+}
+.nav-tabs .nav-item:hover{
+    background: whitesmoke;    
+}
+.nav-link.active {
+    background: lightblue;
+}
+.category-icon{
+    margin: 15px auto 10px auto;
+    display: block;
+}
+.card-text{
+    text-align: left;
+}
+.dropdown, .dropdown .btn, .dropdown-menu{
+    width: 100%;
+    margin: 0;
+}
+.tab-content{
+    width: 50%;
+    margin: 20px auto;
+}
+agm-map {
+    height: 300px;
+}
+.loading img{
+    margin: auto;
+    display: block;
+}
+.no-data{    
+    text-align: center;
+    padding: 50px;
+    font-size: 22px;
+    text-transform: capitalize;
+}

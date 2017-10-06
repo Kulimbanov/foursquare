@@ -1,0 +1,71 @@
+<header>
+  {{title}}
+</header>
+<div class="loading" *ngIf="!this._data.init">
+  <img src="../assets/loading.gif" />
+</div>
+<div *ngIf="this._data.init">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" *ngFor="let category of this._data?.categories; let first = first">
+      <span class="nav-link" [class.active]="first" (click)="this.setCategory(category.id)" id="{{category.id}}-nav">
+      <img class="category-icon" src="{{category.icon.prefix + this.icon + category.icon.suffix}}" />
+        {{category.shortName}}
+      </span>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" *ngFor="let category of this._data?.categories; let first = first" [class.active]="first" id="{{category.id}}"
+      role="tabpanel">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="selectedSubCategory" data-toggle="dropdown">
+          {{ category.name }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" *ngFor="let sub of category.categories" href="#" (click)="this.setSubCategory(sub.id, sub.name)">
+          <img class="sub-category-icon" src="{{sub.icon.prefix + this.icon + sub.icon.suffix}}" />        
+          {{sub.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="loading" *ngIf="this._data.loading">
+  <img src="../assets/loading.gif" />
+</div>
+
+<div *ngIf="!this._data.loading">
+  <div *ngFor="let group of this._data.places">
+    <div class="no-data" *ngIf="group.items.length === 0; else showList">
+      no data
+    </div>
+    <ng-template #showList>
+      <div class="venues">
+        <div class="container" *ngFor="let item of group.items">
+          <div class="card text-center">
+            <div class="card-header">
+              <h2>{{ item.venue.name }}</h2>
+            </div>
+            <div class="card-block">
+              <span *ngIf="item.venue.hereNow.count > 0" class="badge badge-pill badge-info">{{ item.venue.hereNow.summary }}</span>
+              <p class="card-text" *ngIf="item.venue.stats">
+                <span *ngIf="item.venue.stats.checkinsCount > 0" class="badge badge-pill badge-primary">Checkins : {{ item.venue.stats.checkinsCount }}</span>
+                <span *ngIf="item.venue.stats.usersCount > 0" class="badge badge-pill badge-warning">Users : {{ item.venue.stats.usersCount }}</span>
+                <span *ngIf="item.venue.stats.tipCount > 0" class="badge badge-pill badge-danger">Tips : {{ item.venue.stats.tipCount }}</span>
+              </p>
+              <agm-map [latitude]="item.venue.location.lan" [longitude]="item.venue.location.lng">
+                <agm-marker [latitude]="item.venue.location.lan" [longitude]="item.venue.location.lng"></agm-marker>
+              </agm-map>
+              <h4 class="card-title">{{ item.venue.location.formattedAddress }}</h4>
+            </div>
+            <div *ngIf="item.venue.url" class="card-footer text-muted">
+              <a href="item.venue.url" class="btn btn-primary">Web</a>
+              <!-- {{ item.reasons.items.summary}} -->
+            </div>
+          </div>
+          <br/>
+        </div>
+      </div>
+
+    </ng-template>
+  </div>
+</div>
